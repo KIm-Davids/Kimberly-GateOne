@@ -1,0 +1,11 @@
+listed_numbers = []
+user_input = int(input("Enter a number"))
+
+
+for numbers in user_input:
+	listed_numbers.append(user_input)
+
+
+
+
+	
