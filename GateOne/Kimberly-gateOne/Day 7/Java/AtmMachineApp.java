@@ -3,7 +3,7 @@ public class AtmMachineApp {
 		static ArrayList<String> welcomeUserPage = new ArrayList<String>();
 		static ArrayList<String> userDetails = new ArrayList<String>();
 		static ArrayList<String> pin = new ArrayList<String>();
-		static ArrayList<String> deposit = new ArrayList<String>();
+		static ArrayList<Integer> deposit = new ArrayList<Integer>();
 
 		static Scanner input = new Scanner(System.in);
 
@@ -11,30 +11,34 @@ public class AtmMachineApp {
 			private static ArrayList <String> balance(){
 			ArrayList <String> end = new ArrayList<String>();
 
-			ListIterator<String> iterator = welcomeUserPage.listIterator();
-			ListIterator<String> amount = welcomeUserPage.listIterator();			
-
-
+			ListIterator<String> name = welcomeUserPage.listIterator();
+		
 			System.out.print("Name:");
-			while(iterator.hasNext()){
-				System.out.print(" " + iterator.next());
+			while(name.hasNext()){
+				System.out.print(" " + name.next());
 			}
 
+			System.out.println();	
+
+			int depositAmount = deposit.get(0);
 			System.out.print("Deposit Amount: ");
-			System.out.print();
+			System.out.print(depositAmount);
 		
 				return end;
 			}
 
 
 
-			private static ArrayList<String> deposit(){
+			private static ArrayList<Integer> deposit(){
+
+				int depositMoney = 0;
 
 				System.out.println("Enter amount to deposit");
-				String depositMoney = input.next();
-	
+				int depositMoneyInput = input.nextInt();
+					
 				deposit.add(depositMoney);
-
+				deposit.add(depositMoneyInput);
+				
 				System.out.println();
 				System.out.println();
 			
