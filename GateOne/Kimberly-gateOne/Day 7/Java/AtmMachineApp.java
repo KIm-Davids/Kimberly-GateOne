@@ -12,18 +12,22 @@ public class AtmMachineApp {
 			ArrayList <String> end = new ArrayList<String>();
 
 			ListIterator<String> name = welcomeUserPage.listIterator();
-		
+			ListIterator<Integer> amountDeposited = deposit.listIterator();
+
 			System.out.print("Name:");
 			while(name.hasNext()){
 				System.out.print(" " + name.next());
 			}
 
 			System.out.println();	
-
-			int depositAmount = deposit.get(0);
+			
 			System.out.print("Deposit Amount: ");
-			System.out.print(depositAmount);
-		
+			while(amountDeposited.hasNext()){
+				System.out.println(" " +amountDeposited.next());
+			}
+
+			System.out.print("Processing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+								
 				return end;
 			}
 
@@ -55,6 +59,7 @@ public class AtmMachineApp {
 					 deposit();
 				}
 					
+				mainMenu();					
 
 				return deposit;
 			}
