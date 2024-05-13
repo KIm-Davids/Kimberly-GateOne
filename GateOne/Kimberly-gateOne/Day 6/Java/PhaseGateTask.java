@@ -1,13 +1,11 @@
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.Arrays;
 import java.util.Scanner;
 public class PhaseGateTask {
-	public static int AgeCalculator(String collectInput){
+	public static void main(String[] args){
 		
-		Scanner input = new Scanner(System.in);
 		LocalDate localDate = LocalDate.now();
-		
+		Scanner input = new Scanner(System.in);
 
 		String year = "";
 		String month = "";
@@ -31,28 +29,27 @@ public class PhaseGateTask {
 		String[] secondHalfOfTheYear = {"jul","aug","sept","oct","nov","dec"};
 
 		
+		System.out.print("Enter your date of birth");
+		String date = input.next();
 
-		
-
-		if(collectInput.length() != 11){	
+		if(date.length() != 11){	
 			
-			year = collectInput.substring(6);
-			month = collectInput.substring(3,5);
-			day = collectInput.substring(0,2);
+			year = date.substring(6);
+			month = date.substring(3,5);
+			day = date.substring(0,2);
 			newDay = Integer.parseInt(day); 
 			newMonth = Integer.parseInt(month);
 			newYearNumbers = Integer.parseInt(year);	
 		}	
 		else{
-			cutOutLetterInBetween = collectInput.substring(0,2);
-			ifLettersUsed = collectInput.substring(7);
+			cutOutLetterInBetween = date.substring(0,2);
+			ifLettersUsed = date.substring(7);
 
-			monthsInLetters = collectInput.substring(3,6);
+			monthsInLetters = date.substring(3,6);
 	
 			secondDate = Integer.parseInt(cutOutLetterInBetween);
 			yearDate = Integer.parseInt(ifLettersUsed);	
 
-			//System.out.println("Your current age is: " + yearDate);
 
 			
 		}
@@ -80,12 +77,6 @@ public class PhaseGateTask {
 		if(newDay  < currentDay && newMonth <= currentMonth && newYearNumbers < currentYear){			
 			System.out.println("Your current age is * " + updatedYear);
 		}
-		
-
-		
-
-		
-		
 		
 	}
 
