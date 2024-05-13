@@ -1,16 +1,36 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 public class AtmMachineApp {
-		static ArrayList<String> welcomPage = new ArrayList<String>();
+		static ArrayList<String> welcomeUserPage = new ArrayList<String>();
 		static ArrayList<String> userDetails = new ArrayList<String>();
 		static ArrayList<String> pin = new ArrayList<String>();
 		static ArrayList<String> deposit = new ArrayList<String>();
 
 		static Scanner input = new Scanner(System.in);
 
+
+			private static ArrayList <String> balance(){
+			ArrayList <String> end = new ArrayList<String>();
+
+			ListIterator<String> iterator = welcomeUserPage.listIterator();
+			ListIterator<String> amount = welcomeUserPage.listIterator();			
+
+
+			System.out.print("Name:");
+			while(iterator.hasNext()){
+				System.out.print(" " + iterator.next());
+			}
+
+			System.out.print("Deposit Amount: ");
+			System.out.print();
+		
+				return end;
+			}
+
+
+
 			private static ArrayList<String> deposit(){
 
-				System.out.print("Enter amount to deposit");
+				System.out.println("Enter amount to deposit");
 				String depositMoney = input.next();
 	
 				deposit.add(depositMoney);
@@ -18,10 +38,19 @@ public class AtmMachineApp {
 				System.out.println();
 				System.out.println();
 			
-				String pinNumber = 
-	
-				System.out.print("Please enter your pin");
-				int pin = input.nextInt();
+			
+				System.out.println("Please enter your pin");
+				String pinNo = input.next();
+
+				String pinNumber = pin.get(0);
+			
+				if(!pinNo.equals(pinNumber)){
+					System.out.println();
+					System.out.println("Wrong pin");
+					System.out.println();
+					 deposit();
+				}
+					
 
 				return deposit;
 			}
@@ -29,7 +58,7 @@ public class AtmMachineApp {
 
 			private static int errorMessage(){
 
-				System.out.print(" Press 1 to try again or 2 to quit");
+				System.out.print(" Press 1 to try again or any number to quit");
 				int errorInput = input.nextInt();			
 
 				if(errorInput == 1){
@@ -43,9 +72,9 @@ public class AtmMachineApp {
 
 			private static ArrayList<String> welcomeUserPage(){
 				
-				ArrayList<String> welcomeUserPage = new ArrayList<String>();
+				ArrayList<String> welcomeUser = new ArrayList<String>();
 
-				System.out.print("WELCOME TO KIMBERLY MULTINATIONAL BANK");
+				System.out.print("WELCOME TO BANKE MULTINATIONAL BANK");
 	
 					System.out.println();
 					System.out.println();
@@ -58,12 +87,12 @@ public class AtmMachineApp {
 				System.out.println("Please enter your First name");
 				String firstName = input.next();
 	
-				userDetails.add(firstName);
+				welcomeUserPage.add(firstName);
 
 				System.out.print("Please enter your Last name\n");
 				String lastName = input.next();
 
-				userDetails.add(lastName);
+				welcomeUserPage.add(lastName);
 
 				System.out.println("Create a pin");
 				String pinNumber = input.next();
@@ -112,7 +141,8 @@ public class AtmMachineApp {
 							case 1: deposit();
 								    break;
 							case 2: 
-							case 3:
+							case 3: balance();
+								    break;
 							case 4:
 							case 5:
 							case 6:
@@ -142,6 +172,8 @@ public class AtmMachineApp {
 		public static void main(String[] args){
 		welcomeUserPage();
 		mainMenu();
+
+		//System.out.print(pin);
 	
 	}                                                                                                                      				
 }
