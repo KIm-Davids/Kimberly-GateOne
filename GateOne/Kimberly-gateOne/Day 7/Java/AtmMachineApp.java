@@ -4,49 +4,62 @@ public class AtmMachineApp {
 		static ArrayList<String> userDetails = new ArrayList<String>();
 		static ArrayList<String> pin = new ArrayList<String>();
 		static ArrayList<Integer> deposit = new ArrayList<Integer>();
+		static ArrayList<Integer> balance = new ArrayList<Integer>();
 
 		static Scanner input = new Scanner(System.in);
 
+			private static ArrayList<Integer> withdrawBalance(){
+				ListIterator<Integer> withdraw = balance.listIterator();	
+				
+				int userBalance = 0;
+				int loadingBalance = 0;
+
+				System.out.println("Please enter your pin");
+				String pinNo = input.next();
+
+				String pinNumber = pin.get(0);
+			
+				if(!pinNo.equals(pinNumber)){
+					System.out.println();
+					System.out.println("Wrong pin");
+					System.out.println();
+					 balance();
+				}
+
+				System.out.println("How much would you like to withdraw ?");
+				int withdrawAmount = input.nextInt();
+
+				for(int counter = 0; counter < balance.size(); counter++){
+					loadingBalance = balance.get(counter);
+					userBalance = loadingBalance - withdrawAmount;
+				}
+				if(userBalance > 0){
+					System.out.println("Remaining Balance: " + userBalance);
+					System.out.print("Withdraw Successful\n\nPerform Another Transaction\n");
+					String performAnotherTrans = input.next();
+
+				if(performAnotherTrans.equalsIgnoreCase("yes")){
+					withdrawBalance();
+				}
+			
+				}
+				if(userBalance < 0){
+					System.out.println("Insufficient Funds\n");
+					withdrawBalance();
+				}
+				
+				balance.add(userBalance);
+				
+					return balance;
+			}
 
 			private static ArrayList <String> balance(){
-			ArrayList <String> end = new ArrayList<String>();
+				ArrayList <String> end = new ArrayList<String>();
 
-			ListIterator<String> name = welcomeUserPage.listIterator();
-			ListIterator<Integer> amountDeposited = deposit.listIterator();
+				int userBalance = 0;
+				ListIterator<String> name = welcomeUserPage.listIterator();
+				ListIterator<Integer> amountDeposited = deposit.listIterator();
 
-			System.out.print("Name:");
-			while(name.hasNext()){
-				System.out.print(" " + name.next());
-			}
-
-			System.out.println();	
-			
-			System.out.print("Deposit Amount: ");
-			while(amountDeposited.hasNext()){
-				System.out.println(" " +amountDeposited.next());
-			}
-
-			System.out.print("Processing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-								
-				return end;
-			}
-
-
-
-			private static ArrayList<Integer> deposit(){
-
-				int depositMoney = 0;
-
-				System.out.println("Enter amount to deposit");
-				int depositMoneyInput = input.nextInt();
-					
-				deposit.add(depositMoney);
-				deposit.add(depositMoneyInput);
-				
-				System.out.println();
-				System.out.println();
-			
-			
 				System.out.println("Please enter your pin");
 				String pinNo = input.next();
 
@@ -58,7 +71,61 @@ public class AtmMachineApp {
 					System.out.println();
 					 deposit();
 				}
+
+				System.out.print("Name:");
+				while(name.hasNext()){
+					System.out.print(" " + name.next());
+				}
+
+				System.out.println();	
+				System.out.println();	
+	
+				System.out.print("Account Balance: ");
+			
+				for(int counter = 0; counter < deposit.size(); counter++){
+					userBalance += deposit.get(counter);
+
+				}
+				balance.add(userBalance);
+			
+			
+				System.out.println(userBalance);
+			
+				System.out.println();	
+				System.out.println();	
+
+				System.out.print("Processing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+				mainMenu();				
+				return end;
+			}
+
+
+
+			private static ArrayList<Integer> deposit(){
+
+				int depositMoney = 0;
+
+				System.out.println("Please enter your pin");
+				String pinNo = input.next();
+
+				String pinNumber = pin.get(0);
+			
+				if(!pinNo.equals(pinNumber)){
+					System.out.println();
+					System.out.println("Wrong pin");
+					System.out.println();
+					 deposit();
+				}
+
+				System.out.println("Enter amount to deposit");
+				int depositMoneyInput = input.nextInt();
 					
+				deposit.add(depositMoney);
+				deposit.add(depositMoneyInput);
+				
+				System.out.println();
+				System.out.println();
+														
 				mainMenu();					
 
 				return deposit;
@@ -111,8 +178,6 @@ public class AtmMachineApp {
 		
 				return welcomeUserPage;
 
-			
-			
 			}
 
 
@@ -149,17 +214,17 @@ public class AtmMachineApp {
 				switch(loginPage){
 							case 1: deposit();
 								    break;
-							case 2: 
+							case 2: withdrawBalance();
+								   break;
 							case 3: balance();
 								    break;
 							case 4:
 							case 5:
 							case 6:
-							case 7: System.out.print("Thank you for your Patronage");
+							case 7: System.out.println("Thank you for your Patronage\n");
+								   break;
 							default: errorMessage();
 	
-
-						
 
 				}
 
