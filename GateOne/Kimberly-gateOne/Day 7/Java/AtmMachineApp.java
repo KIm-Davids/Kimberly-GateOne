@@ -23,16 +23,24 @@ public class AtmMachineApp {
 					System.out.println();
 					System.out.println("Wrong pin");
 					System.out.println();
-					 balance();
+					withdrawBalance();
 				}
 
 				System.out.println("How much would you like to withdraw ?");
 				int withdrawAmount = input.nextInt();
 
 				for(int counter = 0; counter < balance.size(); counter++){
+					if(withdrawAmount > balance.get(counter)){
+						System.out.println("Insufficient Funds *");
+						withdrawBalance();
+					}
 					loadingBalance = balance.get(counter);
-					userBalance = loadingBalance - withdrawAmount;
+					
 				}
+				userBalance = loadingBalance - withdrawAmount;
+
+				balance.add(userBalance);
+
 				if(userBalance > 0){
 					System.out.println("Remaining Balance: " + userBalance);
 					System.out.print("Withdraw Successful\n\nPerform Another Transaction\n");
@@ -42,13 +50,18 @@ public class AtmMachineApp {
 					withdrawBalance();
 				}
 			
+				if(performAnotherTrans.equalsIgnoreCase("no")){
+					mainMenu();
 				}
-				if(userBalance < 0){
+			
+				}
+				if(userBalance <= 5){
 					System.out.println("Insufficient Funds\n");
 					withdrawBalance();
+					mainMenu();
 				}
 				
-				balance.add(userBalance);
+				
 				
 					return balance;
 			}
@@ -60,17 +73,7 @@ public class AtmMachineApp {
 				ListIterator<String> name = welcomeUserPage.listIterator();
 				ListIterator<Integer> amountDeposited = deposit.listIterator();
 
-				System.out.println("Please enter your pin");
-				String pinNo = input.next();
-
-				String pinNumber = pin.get(0);
-			
-				if(!pinNo.equals(pinNumber)){
-					System.out.println();
-					System.out.println("Wrong pin");
-					System.out.println();
-					 deposit();
-				}
+				pinVerification();
 
 				System.out.print("Name:");
 				while(name.hasNext()){
@@ -105,17 +108,7 @@ public class AtmMachineApp {
 
 				int depositMoney = 0;
 
-				System.out.println("Please enter your pin");
-				String pinNo = input.next();
-
-				String pinNumber = pin.get(0);
-			
-				if(!pinNo.equals(pinNumber)){
-					System.out.println();
-					System.out.println("Wrong pin");
-					System.out.println();
-					 deposit();
-				}
+				pinVerification();
 
 				System.out.println("Enter amount to deposit");
 				int depositMoneyInput = input.nextInt();
@@ -143,6 +136,21 @@ public class AtmMachineApp {
 					return errorInput;
 				
 			}	
+
+			private static String pinVerification(){
+				System.out.println("Please enter your pin");
+				String pinNo = input.next();
+
+				String pinNumber = pin.get(0);
+			
+				if(!pinNo.equals(pinNumber)){
+					System.out.println();
+					System.out.println("Wrong pin");
+					System.out.println();
+					 pinVerification();
+				}
+					return pinNo;
+			}
 
 
 
