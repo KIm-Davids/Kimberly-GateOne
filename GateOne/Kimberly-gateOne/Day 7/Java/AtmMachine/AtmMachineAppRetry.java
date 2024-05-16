@@ -3,10 +3,6 @@ public class AtmMachineAppRetry {
 		static Scanner input = new Scanner(System.in);
 		static AtmMachine myAccount = new AtmMachine();
 		
-		private 
-		
-
-
 			private static void closeAccount(){
 			
 				System.out.print("Are you sure you want to close your account ?");
@@ -73,43 +69,126 @@ public class AtmMachineAppRetry {
 
 			
 			private static void newUser(){
-				double newBalance = myAccount.gettransferAmount();	
-				String newUserDetails = myAccount.getaccountNumber();
-
-				if(newBalance > 0){
-					System.out.printf("You account has been credited: %n%d%n", newBalance);
+				
+				System.out.println();
+				System.out.println();
 			
+				System.out.print("Loading >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+				
+				System.out.println();
+				System.out.println();	
+
+				System.out.print("""
+
+				1 -> Deposit
+				
+				2 -> Withdraw Money
+
+				3 -> Account Balance
+	
+				4 -> Transfer Money
+
+				5 -> Change pin 
+		
+				6 -> Close Account
+
+					""");
+		
+				int loginPage = input.nextInt();
+
+				switch(loginPage){
+							case 1: deposit();
+								    break;
+							case 2: withdrawBalance();
+								   break;
+							case 3: newBalance();
+								    break;
+							case 4:  transferBalance();
+								    break;
+							case 5:  changePin();
+								   break;
+							case 6: closeAccount();
+									break;
+							case 7: System.out.println("Thank you for your Patronage\n");
+								   break;
+							default: mainMenu();
+									break;
+	
 				}
+
+				
+		
+				double newBalance = myAccount.getNewUserAccount();	
+				String newUserDetails = myAccount.getaccountNumber();
+				String oldUserName = myAccount.getName();
 				
 
+			
+				System.out.println();
+				System.out.println();
+
+				System.out.println();
+				System.out.println();
+
+					mainMenu();
+
+				if(oldUserName == oldUserName && newUserDetails == newUserDetails ){
+					System.out.printf("Your account %n%s has been credited by %s Amount: %.2f", newUserDetails, oldUserName, newBalance);
+				}
+				
 			}
+
+			public static void thirdAccount(){
+				double newBalance = myAccount.getThirdBalance();	
+				String newUserDetails = myAccount.getaccountNumber();
+				String oldUserName = myAccount.getthirdUser();
+				
+
+			
+				System.out.println();
+				System.out.println();
+
+				System.out.println();
+				System.out.println();
+
+					mainMenu();
+
+				if(oldUserName == oldUserName && newUserDetails == newUserDetails ){
+					System.out.printf("Your account %n%s has been credited by %s Amount: %.2f", newUserDetails, oldUserName, newBalance);
+
+		
+				}
+		}
+								
+			
 
 
 
 			private static void transferBalance(){
 
 				System.out.println("How much would you like to transfer ?");
-				int transferAmount = input.nextInt();
+				double transferAmount = input.nextInt();
 				
 				if(transferAmount >  myAccount.getBalance()){
 					System.out.println("Insufficient Funds\n");
 					mainMenu();
-				
+					
 				}
 
-				System.out.print("Please enter the name of the user");
+				System.out.println("Please enter the name of the user");
 				String transferName = input.next();
 
-				System.out.print("Please enter the account number of the user");
+				System.out.println("Please enter the account number of the user");
 				String transferAccountNumber = input.next();
 
+				myAccount.setUpdatedAmount(transferAmount);
 
-				myAccount.setsecondUser(transferAmount);
+				myAccount.setNewUserBalance(transferAmount);
 				myAccount.setnewUserAccountNumber(transferAccountNumber);
 
 				System.out.printf("Your account has been Debited, Your remaining balance is: %n%.2f%n", myAccount.getBalance());
 
-				System.out.println("Would you like make another transfer ?");
+				System.out.println("Would you like make another transfer<yes> or <no>\n\nOr click 'I' to transfer to another bank ?");
 				String performAnotherTrans = input.next();	
 
 				if(performAnotherTrans.equalsIgnoreCase("yes")){
@@ -119,6 +198,13 @@ public class AtmMachineAppRetry {
 				if(performAnotherTrans.equalsIgnoreCase("no")){
 					mainMenu();
 				}
+				if(performAnotherTrans.equalsIgnoreCase("I")){
+					transferBalance();
+					myAccount.setThirdUser(transferName);
+					myAccount.setThirdUserBalance(transferAmount);
+				}
+
+				
 			
 				
 				
@@ -228,6 +314,29 @@ public class AtmMachineAppRetry {
 				mainMenu();		
 			}
 
+			private static void newBalance(){
+						
+
+				int userBalance = 0;
+				
+
+				System.out.printf("Name: %s%n",myAccount.getthirdUser());
+				
+
+				System.out.print("Account Number: %d",  getthirdUserAccountNumber);			
+
+				System.out.println();	
+				System.out.println();	
+	
+				System.out.printf("Account Balance: %n%.2f%n",myAccount.getThirdBalance());
+					
+				System.out.println();	
+				System.out.println();	
+
+				System.out.print("Processing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+				mainMenu();		
+			}
+
 
 		private static void deposit(){
 
@@ -307,13 +416,18 @@ public class AtmMachineAppRetry {
 
 			1 -> Create Account
 			2 -> Login into your account
+			3 -> Login to another account
 
 			""");
 			int login = input.nextInt();
 
 			switch(login){
 						case 1: welcomeUserPage();
+							   break;
 						case 2: loginPage();
+							    break;
+						case 3: newUser();
+							    break;
 			}
 
 

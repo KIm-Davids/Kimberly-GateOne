@@ -1,14 +1,16 @@
 public class AtmMachine {
 
-	//ArrayList<double> AtmMachine = new ArrayList<Double>();
-
 	private String name;
 	private int pin;
 	private double balance;
+	private double newUserBalance;
 	private double deposit;
 	private double withdraw;
 	private double transferAmount;
 	private String newAccount;
+	private String thirdUserName;
+	private double thirdUserBalance;
+	private String thirdUserAccountNumber;
 
 	public void setName(String name){
 		this.name = name;
@@ -33,6 +35,15 @@ public class AtmMachine {
 	}
 		
 	public double getBalance(){
+		return balance;
+	}
+
+	public void setUpdatedAmount(double newAmount){
+		this.balance = balance - newAmount;
+
+	}
+
+	public double getNewAmount(){
 		return balance;
 	}
 
@@ -65,9 +76,47 @@ public class AtmMachine {
 	public void setnewUserAccountNumber(String accountNumber){
 		this.newAccount = accountNumber;
 	}
+
+	public void setNewUserBalance(double newUserAccount){
+		this.newUserBalance = newUserBalance + newUserAccount;
+	}
+
+	public double getNewUserAccount(){
+		return newUserBalance;
+	}
 	
 	public String getaccountNumber(){
 		return newAccount;
 	}
 
+	public void setThirdUser(String thirdUser){
+		this.thirdUserName = thirdUser;
+	}
+
+	public String getthirdUser(){
+		return thirdUserName;
+	}
+		
+	public void setThirdUserBalance(double thirdInput){
+		this.thirdUserBalance = thirdUserBalance + thirdInput;
+	}
+	
+	public double getThirdBalance(){
+		return thirdUserBalance;
+	}
+	
+	public void setnewUserAccountNumber(String thirdUserAc){
+		this.thirdUserAccountNumber = thirdUserAc;
+	}
+	
+	public String getthirdUserAccountNumber(){
+		return thirdUserAccountNumber;
+	}
 }
+
+
+
+
+
+
+
