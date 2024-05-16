@@ -1,13 +1,6 @@
-import java.util.Scanner;
-public class AtmMachineAppRetry {
-		static Scanner input = new Scanner(System.in);
-		static AtmMachine myAccount = new AtmMachine();
-		
-		private 
-		
+private class newUser {	
 
-
-			private static void closeAccount(){
+	private static void closeAccount(){
 			
 				System.out.print("Are you sure you want to close your account ?");
 				String userInput = input.next();
@@ -19,13 +12,9 @@ public class AtmMachineAppRetry {
 					System.out.println("Thank You\nWe hope to see you again");
 					System.out.println();
 					System.out.println();
-				}
-				else{
-					closeAccount();
-				}
+
 					createAccountPage();
-					newUser();
-				
+				}
 
 			
 
@@ -97,13 +86,8 @@ public class AtmMachineAppRetry {
 				
 				}
 
-				System.out.print("Please enter the name of the user");
-				String transferName = input.next();
-
-				System.out.print("Please enter the account number of the user");
+				System.out.print("Please enter the Account Number");
 				String transferAccountNumber = input.next();
-
-
 				myAccount.setsecondUser(transferAmount);
 				myAccount.setnewUserAccountNumber(transferAccountNumber);
 
@@ -337,14 +321,6 @@ public class AtmMachineAppRetry {
 			mainMenu();
 		}
 
-		private static void createPin(){
-			
-		System.out.println("Create a pin");
-		int pinNumber = input.nextInt();
-			
-		myAccount.setPin(pinNumber);
-			
-		}
 
 
 
@@ -365,15 +341,19 @@ public class AtmMachineAppRetry {
 			System.out.println();
 			System.out.println();
 	
-		System.out.print("Please enter your full name    ");
+		System.out.print("Please enter your full name\n");
 		String userName = input.next();
 
-			System.out.print("Welcome User: 8366787112");		
+			System.out.println();
+			System.out.println();
+
+		System.out.println("Create a pin");
+		int pinNumber = input.nextInt();
 
 			System.out.println();
 			System.out.println();
 
-			 createPin();
+		System.out.print("Welcome User: 8366787112");
 	
 			System.out.println();
 			System.out.println();
@@ -382,21 +362,9 @@ public class AtmMachineAppRetry {
 
 					
 				myAccount.setName(userName);
-				
+				myAccount.setPin(pinNumber);
 
+			System.out.println("name" + myAccount.getName());
+			System.out.println("name" + pinNumber);	
 		}
 
-
-
-
-	public static void main(String[] args){
-		
-		createAccountPage();
-		
-		mainMenu();
-								
-	
-	
-		
-	}
-}

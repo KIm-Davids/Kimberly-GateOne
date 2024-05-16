@@ -8,10 +8,10 @@ public class AtmMachine {
 	private double deposit;
 	private double withdraw;
 	private double transferAmount;
+	private String newAccount;
 
 	public void setName(String name){
 		this.name = name;
-		
 	}
 
 	public String getName(){
@@ -60,6 +60,14 @@ public class AtmMachine {
 
 	public double gettransferAmount(){
 		return transferAmount;
+	}
+
+	public void setnewUserAccountNumber(String accountNumber){
+		this.newAccount = accountNumber;
+	}
+	
+	public String getaccountNumber(){
+		return newAccount;
 	}
 
 }
