@@ -50,8 +50,8 @@ public class MenstralApp {
 		LocalDate endPeriod = nextPeriod.plusDays(duration);
 
 
-		System.out.printf("Your next period Stats from %s to %s", nextPeriod, endPeriod);	
-		System.out.print("Let's go back <yes> or <no>");
+		System.out.printf("Your next period Starts from %s to %s%n", nextPeriod, endPeriod);	
+		System.out.println("Let's go back <yes> or <no>");
 
 		String goBack = input.next();
 
@@ -87,8 +87,8 @@ public class MenstralApp {
 		LocalDate ovulationPeriod = endPeriod.minusDays(result);
 
 		
-		System.out.printf("Your Ovulation date is: "+ ovulationPeriod);
-		System.out.print("Let's go back <yes> or <no>");
+		System.out.println("Your Ovulation date is most likely to be on: "+ ovulationPeriod);
+		System.out.println("Let's go back <yes> or <no>");
 
 		String goBack = input.next();
 
@@ -122,7 +122,16 @@ public class MenstralApp {
 		LocalDate safePeriod = nextPeriod.minusDays(5);
 		LocalDate endSafePeriod = safePeriod.plusDays(5);
 		
-		System.out.printf("Your safe period starts from %s  to %s",  safePeriod, endSafePeriod);
+		System.out.printf("Your safe period starts from %s  to %s%n",  safePeriod, endSafePeriod);
+
+		System.out.println("Let's go back <yes> or <no>");
+
+		String goBack = input.next();
+
+		if(goBack.equalsIgnoreCase("yes")){
+			loginPage();
+		}
+
 	}
 	
 

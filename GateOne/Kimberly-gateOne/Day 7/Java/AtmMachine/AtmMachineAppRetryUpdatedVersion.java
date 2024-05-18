@@ -1,7 +1,9 @@
+import java.util.Random;
 import java.util.Scanner;
-public class AtmMachineAppRetry {
+public class AtmMachineAppRetryUpdatedVersion {
 		static Scanner input = new Scanner(System.in);
 		static AtmMachine myAccount = new AtmMachine();
+		static Random rand = new Random();
 		
 			private static void closeAccount(){
 			
@@ -21,15 +23,12 @@ public class AtmMachineAppRetry {
 				}
 					createAccountPage();
 					newUser();
-				
-
-			
+						
 
 				if(userInput.equalsIgnoreCase("no")){
 					 mainMenu();
 				}
 				
-
 			}
 			
 			
@@ -70,6 +69,26 @@ public class AtmMachineAppRetry {
 			
 			private static void newUser(){
 				
+			System.out.println("Enter your name");
+			String name = input.next();
+
+			System.out.println();
+			System.out.println();
+		
+			long accountNumber = rand.nextLong(1234567890l);
+
+			System.out.print(accountNumber);
+
+			myAccount.setThirdUser(name);
+
+			System.out.println("Enter your pin");
+			int pin = input.nextInt();
+
+			int verifyPin = myAccount.getPin();
+			myAccount.setNewUserPin(pin);
+			
+		
+
 				System.out.println();
 				System.out.println();
 			
@@ -118,12 +137,10 @@ public class AtmMachineAppRetry {
 
 				
 		
-				double newBalance = myAccount.getNewUserAccount();	
+				double newBalance = myAccount.getThirdBalance();	
 				String newUserDetails = myAccount.getaccountNumber();
-				String oldUserName = myAccount.getName();
+				String oldUserName = myAccount.getthirdUser();
 				
-
-			
 				System.out.println();
 				System.out.println();
 
@@ -139,6 +156,7 @@ public class AtmMachineAppRetry {
 			}
 
 			public static void thirdAccount(){
+				
 				double newBalance = myAccount.getThirdBalance();	
 				String newUserDetails = myAccount.getaccountNumber();
 				String oldUserName = myAccount.getthirdUser();
@@ -183,7 +201,7 @@ public class AtmMachineAppRetry {
 
 				myAccount.setUpdatedAmount(transferAmount);
 
-				myAccount.setNewUserBalance(transferAmount);
+				myAccount.setThirdUserBalance(transferAmount);
 				myAccount.setnewUserAccountNumber(transferAccountNumber);
 
 				System.out.printf("Your account has been Debited, Your remaining balance is: %n%.2f%n", myAccount.getBalance());
@@ -314,8 +332,11 @@ public class AtmMachineAppRetry {
 				mainMenu();		
 			}
 
+
+
+
 			private static void newBalance(){
-						
+
 
 				int userBalance = 0;
 				
@@ -323,7 +344,7 @@ public class AtmMachineAppRetry {
 				System.out.printf("Name: %s%n",myAccount.getthirdUser());
 				
 
-				System.out.print("Account Number: %d",  getthirdUserAccountNumber);			
+				System.out.printf("Account Number: %s",myAccount.getthirdUserAccountNumber());			
 
 				System.out.println();	
 				System.out.println();	

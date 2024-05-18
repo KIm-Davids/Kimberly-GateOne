@@ -11,6 +11,7 @@ public class AtmMachine {
 	private String thirdUserName;
 	private double thirdUserBalance;
 	private String thirdUserAccountNumber;
+	private int thirdUserPin;
 
 	public void setName(String name){
 		this.name = name;
@@ -73,17 +74,6 @@ public class AtmMachine {
 		return transferAmount;
 	}
 
-	public void setnewUserAccountNumber(String accountNumber){
-		this.newAccount = accountNumber;
-	}
-
-	public void setNewUserBalance(double newUserAccount){
-		this.newUserBalance = newUserBalance + newUserAccount;
-	}
-
-	public double getNewUserAccount(){
-		return newUserBalance;
-	}
 	
 	public String getaccountNumber(){
 		return newAccount;
@@ -111,6 +101,15 @@ public class AtmMachine {
 	
 	public String getthirdUserAccountNumber(){
 		return thirdUserAccountNumber;
+	}
+
+	public void setNewUserPin(int inputPin){
+		this.thirdUserPin = inputPin;
+	}
+
+
+	public int getThirdUserPin(){
+		return thirdUserPin;
 	}
 }
 
