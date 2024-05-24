@@ -5,9 +5,11 @@ import random
 my_bank = Bank()
 
 def close_account():
-    confirm_prompt = input("Are you sure you want to close your account ? \n\n<yes> or <no>")
+    confirm_prompt = input("Are you sure you want to close your account ? \n\n<yes> or <no>\n")
     if(confirm_prompt == 'no'):
           main_menu()
+    if(confirm_prompt == 'yes'):
+          print("Thank you for banking with us\nWe hope to we can serve you better next time")
     
 
 def change_pin():
