@@ -13,15 +13,18 @@ def close_account():
 def change_pin():
     pin_verification()
 
-    pin_to_change = int(input("Enter your new pin"))
+    pin_to_change = int(input("Enter your new pin\n"))
 
-    confirm_pin = int(input("Please confirm your pin"))
+    confirm_pin = int(input("Please confirm your pin\n"))
     
 
     if(confirm_pin == pin_to_change):
           my_bank.set_pin(confirm_pin)
+          print("Pin Change Successful")
 
-    print("Pin Change Successful")
+    if(confirm_pin != pin_to_change):
+          print("Pin does not match")
+          change_pin()
     main_menu()
 
 
@@ -31,12 +34,14 @@ def transfer():
     if(len(transfer_account_number) < 10):
         print("Invalid Account Number\n\nPlease try again\n")
         transfer()
-
+    
     transfer_amount_str = input("Enter amount to transfer: \n\n")
     remove_comma = transfer_amount_str.replace(",","")
     transfer_amount = int(remove_comma)
 
-    
+    if(transfer_amount <= -1):
+          print("Wrong Input\n\nPlease Try again")
+          transfer()
 
     if(transfer_amount > my_bank.get_balance()):
         print("Insufficient Funds")
@@ -106,13 +111,15 @@ def withdraw():
     withdraw_amount_str = (input("How much would you like to withdraw ?\n"))
     remove_comma = withdraw_amount_str.replace(",","")
     withdraw_amount = int(remove_comma)
-    if(withdraw_amount <= my_bank.get_balance()):
-        print("Withdraw Successful !")
+
+    if(withdraw_amount <= -1):
+          print("Wrong amount\n\nPlease Try again")
+          withdraw()
     if(withdraw_amount > my_bank.get_balance()):
         print("Insufficient Funds !")
+   
     my_bank.set_withdraw(withdraw_amount)
     main_menu()
-
 
 def deposit():
 	
@@ -120,13 +127,16 @@ def deposit():
 	remove_comma = amount_to_deposit_in_str.replace(",","")
 	amount_to_deposit = int(remove_comma)
   
-	if amount_to_deposit < 0:
-		print("Error in amount")
-	my_bank.set_deposit(amount_to_deposit)
+	if(amount_to_deposit < 0):
+		print("Error in amount\n\nPlease Try again")
+		deposit()
+	else:
+		my_bank.set_deposit(amount_to_deposit)
+		print(f'\nDeposit Successful !\n\nLoading >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\nYour initial deposit is {amount_to_deposit}')
+		main_menu()
 	
-	print(f'\nDeposit Successful !\n\nLoading >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\nYour initial deposit is {amount_to_deposit}')
-	main_menu()
-	
+
+
 
 
 def balance():
@@ -152,12 +162,13 @@ def main_menu():
     """)
 	main_menu_page = int(input("Please enter an option\n"))
 	match main_menu_page:
-		case 1: deposit()
-		case 2: withdraw()
-		case 3: balance()
-		case 4: transfer()
-    	case 5: change_pin()
-        case 6: close_account()
+            case 1: deposit()
+            case 2: withdraw()
+            case 3: balance()
+            case 4: transfer()
+            case 5: change_pin()
+            case 6: close_account()
+            case _: print("Invalid Option\n\nPlease try again")
 			 
 
 
