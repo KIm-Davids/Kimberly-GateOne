@@ -14,10 +14,16 @@ import java.util.Scanner;
 			System.out.println("WELCOME TO MINI TIK TAK TOE GAME");
 			
 
+			 
+		
 
 			for(int counter =0; counter < board.length; counter++){
 				for(int index = 0; index < board.length; index++){
-					System.out.println("Please enter an 'X' or 'O' to begin:\npostion" + (index + 1));						board[counter][index] = input.next();
+					System.out.println("Please enter an 'X' or 'O' to begin:\npostion" + (index + 1));						
+					board[counter][index] = input.next();
+					System.out.print()
+					
+
 					if(board[counter][index].equalsIgnoreCase("x") | board[counter][index].equalsIgnoreCase("o")){
 						System.out.print("Please try again");
 						

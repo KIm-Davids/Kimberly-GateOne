@@ -2,7 +2,7 @@ import java.util.Scanner;
 	public class AtmCardValidator {
 			public static Boolean cardValidator(String collectInput){
 			
-				if(collectInput.length() == 16 & collectInput.charAt(0) == '4' || collectInput.charAt(0) == '5' || collectInput.charAt(0) == '6' && collectInput.charAt(4) == '-' & collectInput.charAt(9) == '-' & collectInput.charAt(14) == '-'){
+				if(collectInput.length() == 19 & collectInput.charAt(0) == '4' || collectInput.charAt(0) == '5' || collectInput.charAt(0) == '6' && collectInput.charAt(4) == '-' & collectInput.charAt(9) == '-' & collectInput.charAt(14) == '-'){
 				return true;
 			}
 					
@@ -25,5 +25,5 @@ import java.util.Scanner;
 			}
 
 }
-				//4123-4567-8901-2345
+				
 	

@@ -3,7 +3,6 @@ public class AtmMachine {
 	private String name;
 	private int pin;
 	private double balance;
-	private double newUserBalance;
 	private double deposit;
 	private double withdraw;
 	private double transferAmount;
@@ -12,6 +11,13 @@ public class AtmMachine {
 	private double thirdUserBalance;
 	private String thirdUserAccountNumber;
 	private int thirdUserPin;
+
+	public void AtmMachine(String name, String thirdUserAccountNumber, int pin){
+		this.name = name;
+		this.thirdUserAccountNumber = thirdUserAccountNumber;
+		this.pin = pin;
+
+	}
 
 	public void setName(String name){
 		this.name = name;
@@ -50,7 +56,7 @@ public class AtmMachine {
 
 	public void setDeposit(double deposit){
 		if(deposit > 0.0){
-			this.balance = balance + deposit;
+			this.balance += deposit;
 		}
 	}
 
@@ -59,7 +65,8 @@ public class AtmMachine {
 	}
 
 	public void setWithdraw(double withdraw){
-		this.balance = balance - withdraw;
+          
+		this.balance -= withdraw;
 	}
 
 	public double getWithdraw(){
@@ -75,7 +82,7 @@ public class AtmMachine {
 	}
 
 	
-	public String getaccountNumber(){
+	public String getAccountNumber(){
 		return newAccount;
 	}
 
@@ -107,10 +114,11 @@ public class AtmMachine {
 		this.thirdUserPin = inputPin;
 	}
 
-
 	public int getThirdUserPin(){
 		return thirdUserPin;
 	}
+     
+
 }
 
 
